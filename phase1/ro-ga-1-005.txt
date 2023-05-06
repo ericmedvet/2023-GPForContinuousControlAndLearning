@@ -1,0 +1,63 @@
+runOutcome(
+  index = 14;
+  run = ea.run(
+    problem = ea.p.totalOrder(
+      cFunction = s.task.locomotion.xVelocity(transientTime = 0);
+      qFunction = s.taskRunner(
+        task = s.task.locomotion(
+          duration = 30;
+          initialXGap = 1;
+          initialYGap = 0.1;
+          terrain = s.t.hilly(
+            borderH = 100;
+            borderW = 10;
+            chunkH = 0.25;
+            chunkW = 5;
+            h = 25;
+            seed = 1;
+            w = 500
+          )
+        )
+      );
+      type = maximize
+    );
+    randomGenerator = ea.rg.defaultRG(seed = 5);
+    solver = ea.s.numGA(
+      crossoverP = 0.8;
+      initialMaxV = 1;
+      initialMinV = -1;
+      mapper = er.m.numericalParametrizedHomoBrains(
+        target = s.a.distributedNumGridVSR(
+          body = s.a.vsr.gridBody(
+            sensorizingFunction = s.a.vsr.sf.uniform(
+              sensors = [
+                s.s.ar();
+                s.s.rv(a = 0);
+                s.s.rv(a = 90);
+                s.s.d(a = -90; r = 1)
+              ]
+            );
+            shape = s.a.vsr.s.biped(h = 3; w = 4)
+          );
+          function = ds.num.noised(
+            inner = ds.num.outStepped(
+              inner = ds.num.mlp(innerLayerRatio = 0.65; nOfInnerLayers = 1);
+              stepT = 0.2
+            );
+            inputSigma = 0.05;
+            outputSigma = 0
+          );
+          signals = 1
+        )
+      );
+      minNTournament = 3;
+      nEval = 10000;
+      nPop = 100;
+      sigmaMut = 0.35;
+      tournamentRate = 0.05
+    )
+  );
+  serializedGenotypes = [
+    "rO0ABXNyABNqYXZhLnV0aWwuQXJyYXlMaXN0eIHSHZnHYZ0DAAFJAARzaXpleHAAAAA5dwQAAAA5c3IAEGphdmEubGFuZy5Eb3VibGWAs8JKKWv7BAIAAUQABXZhbHVleHIAEGphdmEubGFuZy5OdW1iZXKGrJUdC5TgiwIAAHhwv/WBfl7eeH1zcQB+AAI//Gq0T315gXNxAH4AAr/2Fh6zHKGBc3EAfgACQBMYiZ6LzEhzcQB+AAK/9F4UYG23yHNxAH4AAj/iomafyKLoc3EAfgACv/YmC5RmA7BzcQB+AAI/3WMfN5H/xnNxAH4AAr+m/R0KpTMIc3EAfgACQAzel6w+YgxzcQB+AAK/0EDIJKNElHNxAH4AAkAAhxecWF7Ac3EAfgACv/jZokWz9YVzcQB+AAK//gJHZmeXenNxAH4AAr/8E+NgzYw7c3EAfgACv+A+C5NFpkNzcQB+AAI/r/QJllP26HNxAH4AAsABbBfTip9Rc3EAfgACv9+rWyb3RqhzcQB+AAI/0+CeFJ9PQXNxAH4AAr/s+PydA+pQc3EAfgACv/5hhbNDzBJzcQB+AAI/pdXJriz27HNxAH4AAj+ysokrTCZMc3EAfgACP/3TsinWpdpzcQB+AAK/4pJwUops1HNxAH4AAr+4Ir1NBsLIc3EAfgACP/S7Qsj+cAFzcQB+AAK/1eofM+fzqHNxAH4AAsADdxR2LemLc3EAfgACP8hAe+aZdA9zcQB+AAK/+Fdn3xQDsnNxAH4AAj/8JKrkxpP1c3EAfgACwAGSN+AJlTtzcQB+AALAAmrQGjO65nNxAH4AAj/5YGcpfmB3c3EAfgACP9eAivEs79pzcQB+AALAAVrtBkiAtHNxAH4AAr/WdV7kPPWEc3EAfgACP9k8yzSW5QNzcQB+AAK/3x/PbUXnlHNxAH4AAkAGPrHhIT5oc3EAfgACv/NBEIxDUJBzcQB+AALAAMVwGH5JyHNxAH4AAj/4KqYmVHaqc3EAfgACP+yHFIJaoyxzcQB+AAI//biviODg/nNxAH4AAsAE8JnLD5c4c3EAfgACv+3bsbQShehzcQB+AAJAAauOfsUIxXNxAH4AAkACPtuKqxuWc3EAfgACP+vYJ1z7jAtzcQB+AAK/wLQx1Rsg0nNxAH4AAj/XSFzkmWP5c3EAfgACv+Iyh3fcFaxzcQB+AALAAJRoRGRjM3NxAH4AAsAI27WM5XCEeA=="
+  ]
+)

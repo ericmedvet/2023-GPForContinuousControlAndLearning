@@ -1,0 +1,25 @@
+---
+title: "GP vs. oGraphEA vs. MLP-GA for VSR control"
+output: html_notebook
+---
+```{r}
+require(tidyverse)
+require(skimr)
+```
+
+## Direct evolution
+
+```{r}
+d.de = read.csv2("phase1/best.csv", dec=".", strip.white = T, stringsAsFactors = T)
+skim(d.de)
+```
+
+### VSR velocity
+```{r, fig.width=8, fig.height=3}
+d.de %>% mutate(evals=round(evals/100)*100) %>% group_by(solver.mapper.target.function.inner.inner, solver.mapper.target.signals, evals) %>% summarise_at(vars(best.fitness.s.task.l.xVelocity), list(Q1=~quantile(., probs=0.25), median=median, Q3=~quantile(., probs=0.75))) %>% ggplot(aes(evals, median, col=solver.mapper.target.function.inner.inner)) + geom_line() + geom_ribbon(aes(ymin=Q1, ymax=Q3, fill=solver.mapper.target.function.inner.inner), alpha=0.2, color=NA) + facet_grid(factor(solver.mapper.target.signals)~.)
+```
+
+### Controller size velocity
+```{r, fig.width=8, fig.height=3}
+d.de %>% mutate(evals=round(evals/100)*100) %>% group_by(solver.mapper.target.function.inner.inner, solver.mapper.target.signals, evals) %>% summarise_at(vars(best.genotype.size), list(Q1=~quantile(., probs=0.25), median=median, Q3=~quantile(., probs=0.75))) %>% ggplot(aes(evals, median, col=solver.mapper.target.function.inner.inner)) + geom_line() + geom_ribbon(aes(ymin=Q1, ymax=Q3, fill=solver.mapper.target.function.inner.inner), alpha=0.2, color=NA) + facet_grid(factor(solver.mapper.target.signals)~.)
+```
