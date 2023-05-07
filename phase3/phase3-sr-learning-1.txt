@@ -1,59 +1,75 @@
 ea.experiment(
-  runs = (randomGenerator = (seed = [1:1:1]) * [ea.rg.defaultRG()]) *
+  runs = (randomGenerator = (seed = [1:1:10]) * [ea.rg.defaultRG()]) *
     (solver = [
       ea.s.multiSRTreeGP(
         mapper = ea.m.treeMRF(dataset = ea.d.num.empty(xVars = [x1;x2;x3;x4;x5;x6;x7]; yVars = [y0;y1]); postOperator = tanh);
-        nEval = 1000;
+        nEval = 10000;
         nPop = 100;
         diversity = true
       );
       ea.s.numGA(
         mapper = ea.m.mlpMRF(dataset = ea.d.num.empty(xVars = [x1;x2;x3;x4;x5;x6;x7]; yVars = [y0;y1]));
-        nEval = 1000;
+        nEval = 10000;
         nPop = 100
       );
       ea.s.oGraphea(
         mapper = ea.m.oGraphMRF(dataset = ea.d.num.empty(xVars = [x1;x2;x3;x4;x5;x6;x7]; yVars = [y0;y1]); postOperator = tanh);
-        nEval = 1000;
+        nEval = 10000;
         nPop = 100
       )
-    ]) * (
-      problem = [
-        ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ga-1-001.txt"));
-        ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ga-1-002.txt"))
-      ]
-    ) * [ea.run()];
+    ]) * (problem = [
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ga-1-001.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ga-1-002.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ga-1-003.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ga-1-004.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ga-1-005.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ga-1-006.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ga-1-007.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ga-1-008.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ga-1-009.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ga-1-010.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ga-1-001.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-gp-1-002.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-gp-1-003.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-gp-1-004.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-gp-1-005.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-gp-1-006.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-gp-1-007.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-gp-1-008.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-gp-1-009.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-gp-1-010.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ographea-1-001.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ographea-1-002.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ographea-1-003.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ographea-1-004.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ographea-1-005.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ographea-1-006.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ographea-1-007.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ographea-1-008.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ographea-1-009.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(filePath = "../phase2/data-ro-ographea-1-010.txt"))
+    ]) * [ea.run()];
   listeners = [
-    ea.l.tui(
-      functions = [
-        ea.nf.size(f = ea.nf.genotype(individual = ea.nf.best()); s = "%5d");
-        ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"));
-        ea.nf.fitnessHist(f = ea.nf.f(outerF = s.task.l.xVelocity()))
-      ];
-      plots = [
-        ea.plot.fitness(x = ea.nf.progress(); f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0; maxX = 1)
-      ]
-    );
     ea.l.bestCsv(
-      filePath = "best.csv";
+      filePath = "best-1.csv";
       functions = [
-        ea.nf.bestFitness(s = "%8.4f"));
+        ea.nf.bestFitness(s = "%8.4f");
         ea.nf.size(f = ea.nf.genotype(individual = ea.nf.best()); s = "%5d")
       ];
       runKeys = ["solver.mapper"; "randomGenerator.seed"; "problem.trainingDataset.filePath"]
     );
     ea.l.net(
-      serverKeyFilePath = "../server-key.txt";
+      serverKeyFilePath = "../../server-key.txt";
       functions = [
         ea.nf.size(f = ea.nf.genotype(individual = ea.nf.best()); s = "%5d");
-        ea.nf.bestFitness(s = "%8.4f"));
+        ea.nf.bestFitness(s = "%8.4f");
         ea.nf.hist(collection = ea.nf.each(map = ea.nf.fitness(); collection = ea.nf.all()));
         ea.nf.percentile(collection = ea.nf.each(map = ea.nf.fitness(); collection = ea.nf.all()); p = 0.75; s = "%6.2f")
       ];
       plots = [
         ea.plot.xyPlot(
           x = ea.nf.progress();
-          y = ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity()));
+          y = ea.nf.bestFitness();
           minX = 0;
           maxX = 1
         );
@@ -65,6 +81,6 @@ ea.experiment(
         )
       ]
     );
-    ea.l.outcomeSaver(fileNameTemplate = "ro-{solver.mapper:%#s}-{randomGenerator.seed:%02d}.txt")
+    ea.l.outcomeSaver(fileNameTemplate = "ro-{solver.mapper:%#s}-{index:%03d}-{randomGenerator.seed:%02d}.txt")
   ]
 )

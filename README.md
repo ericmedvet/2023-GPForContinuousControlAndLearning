@@ -8,9 +8,8 @@ Here, we assume that it's in `/home/eric/IdeaProjects/`.
 
 For each phase, restart from the root directory of the project. 
 
-## Phase 1: evolution
+## Phase 1: evolve controllers
 
-For evolving the controllers:
 ```shell
 cd phase1
 java -cp "/home/eric/IdeaProjects/2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.jgea.experimenter.Starter -b io.github.ericmedvet.robotevo2d.main.PreparedNamedBuilder --expFile phase1-embodied.txt
@@ -18,9 +17,16 @@ java -cp "/home/eric/IdeaProjects/2d-robot-evolution/io.github.ericmedvet.robote
 
 ## Phase 2: save learning sets
 
-Example for just one teacher:
 ```shell
-cd phase2
-java -cp "/home/eric/IdeaProjects/2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.robotevo2d.main.Player -f saver-play-gp-1-template.txt
+cd phase1
+sh ../phase2/process.sh
+```
+
+## Phase 3: evolve regressors from saved data
+
+For 1 signal:
+```shell
+cd phase3
+java -cp "/home/eric/IdeaProjects/2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.jgea.experimenter.Starter -b io.github.ericmedvet.robotevo2d.main.PreparedNamedBuilder --expFile phase3-sr-learning-1.txt
 ```
 
