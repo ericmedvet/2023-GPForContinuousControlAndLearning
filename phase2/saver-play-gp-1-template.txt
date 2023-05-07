@@ -16,7 +16,7 @@ er.play(
         inner = ds.num.outStepped(
           inner = er.ds.num.ioSaver(
             inner = er.ds.num.treeMRF(postOperator = tanh);
-            filePath = "io-gp-1-001.txt";
+            filePath = "../phase2/data-FILE_NAME";
             finalT = 29
           );
           stepT = 0.2
@@ -28,7 +28,8 @@ er.play(
     )
   );
   task = s.task.locomotion(terrain = s.t.hilly(chunkH = 0.25));
-  drawer = sim.drawer();
-  genotype = er.fromRunOutcome(filePath = "../phase1/ro-gp-1-001.txt");
-  videoFilePath = "video-gp-1-001.mp4"
+  genotype = er.fromRunOutcome(filePath = "FILE_NAME");
+  outcomeFunctions = [
+    er.nf.f(inner = s.task.locomotion.xVelocity())
+  ]
 )

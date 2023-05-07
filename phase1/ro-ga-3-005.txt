@@ -1,4 +1,4 @@
-runOutcome(
+ea.runOutcome(
   index = 44;
   run = ea.run(
     problem = ea.p.totalOrder(

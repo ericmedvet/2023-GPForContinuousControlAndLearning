@@ -1,4 +1,4 @@
-runOutcome(
+ea.runOutcome(
   index = 28;
   run = ea.run(
     problem = ea.p.totalOrder(
@@ -55,7 +55,7 @@ runOutcome(
       nEval = 10000;
       nPop = 100;
       nodeAdditionRate = 1;
-      operators = ["+"; "-"; "*"; "p/"; plog];
+      
       rankBase = 0.75
     )
   );

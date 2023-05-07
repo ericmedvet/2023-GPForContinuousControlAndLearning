@@ -1,4 +1,4 @@
-runOutcome(
+ea.runOutcome(
   index = 3;
   run = ea.run(
     problem = ea.p.totalOrder(
@@ -58,7 +58,7 @@ runOutcome(
       nConst = 10;
       nEval = 10000;
       nPop = 100;
-      operators = ["+"; "-"; "*"; "p/"];
+      
       tournamentRate = 0.05
     )
   );
