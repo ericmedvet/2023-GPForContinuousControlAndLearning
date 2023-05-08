@@ -60,3 +60,5 @@ for f in ro-ographea-3-*.txt; do
   fi
 done
 
+rm play.txt
+
