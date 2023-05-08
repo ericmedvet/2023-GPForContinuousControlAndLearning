@@ -1,5 +1,5 @@
 ea.experiment(
-  runs = (randomGenerator = (seed = [1:1:10]) * [ea.rg.defaultRG()]) *
+  runs = (randomGenerator = (seed = [1:1:5]) * [ea.rg.defaultRG()]) *
     (solver = [
       ea.s.multiSRTreeGP(
         mapper = ea.m.treeMRF(dataset = ea.d.num.empty(xVars = [x1;x2;x3;x4;x5;x6;x7]; yVars = [y0;y1]); postOperator = tanh);
