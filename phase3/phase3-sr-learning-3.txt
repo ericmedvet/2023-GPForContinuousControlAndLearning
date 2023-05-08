@@ -51,7 +51,7 @@ ea.experiment(
     ]) * [ea.run()];
   listeners = [
     ea.l.bestCsv(
-      filePath = "best-1.csv";
+      filePath = "best-3.csv";
       functions = [
         ea.nf.bestFitness(s = "%8.4f");
         ea.nf.size(f = ea.nf.genotype(individual = ea.nf.best()); s = "%5d")
@@ -60,6 +60,7 @@ ea.experiment(
     );
     ea.l.net(
       serverKeyFilePath = "../../server-key.txt";
+      serverAddress = "172.30.50.105";
       functions = [
         ea.nf.size(f = ea.nf.genotype(individual = ea.nf.best()); s = "%5d");
         ea.nf.bestFitness(s = "%8.4f");
@@ -81,6 +82,6 @@ ea.experiment(
         )
       ]
     );
-    ea.l.outcomeSaver(filePathTemplate = "ro-{solver.mapper:%#s}-{index:%03d}-{randomGenerator.seed:%02d}.txt")
+    ea.l.outcomeSaver(filePathTemplate = "ro-3-{solver.mapper:%#s}-{index:%03d}-{randomGenerator.seed:%02d}.txt")
   ]
 )
