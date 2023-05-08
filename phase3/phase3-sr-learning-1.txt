@@ -81,6 +81,6 @@ ea.experiment(
         )
       ]
     );
-    ea.l.outcomeSaver(nFolds = 20; filePathTemplate = "ro-{solver.mapper:%#s}-{index:%03d}-{randomGenerator.seed:%02d}.txt")
+    ea.l.outcomeSaver(filePathTemplate = "ro-{solver.mapper:%#s}-{index:%03d}-{randomGenerator.seed:%02d}.txt")
   ]
 )
