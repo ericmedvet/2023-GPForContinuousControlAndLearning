@@ -1,0 +1,31 @@
+er.play(
+  mapper = er.m.treeParametrizedHomoBrains(
+    target = s.a.distributedNumGridVSR(
+      body = s.a.vsr.gridBody(
+        sensorizingFunction = s.a.vsr.sf.uniform(
+          sensors = [
+            s.s.ar();
+            s.s.rv(a = 0);
+            s.s.rv(a = 90);
+            s.s.d(a = -90; r = 1)
+          ]
+        );
+        shape = s.a.vsr.s.biped(h = 3; w = 4)
+      );
+      function = ds.num.noised(
+        inner = ds.num.outStepped(
+          inner = er.ds.num.treeMRF(postOperator = tanh);
+          stepT = 0.2
+        );
+        inputSigma = 0.05;
+        outputSigma = 0
+      );
+      signals = 1
+    )
+  );
+  task = s.task.locomotion(terrain = s.t.hilly(chunkH = 0.25));
+  genotype = er.fromRunOutcome(filePath = "ro-ea.m.treeMRF-002-03.txt");
+  outcomeFunctions = [
+    er.nf.f(inner = s.task.locomotion.xVelocity())
+  ]
+)
