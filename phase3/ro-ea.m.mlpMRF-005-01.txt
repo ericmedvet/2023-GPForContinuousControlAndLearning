@@ -1,0 +1,36 @@
+ea.runOutcome(
+  index = 5;
+  run = ea.run(
+    problem = ea.p.mr.fromData(
+      trainingDataset = ea.dataset.numerical.fromFile(
+        filePath = "../phase2/data-ro-ga-1-001.txt";
+        folds = [0];
+        nFolds = 40;
+        xVarNamePattern = "x.*";
+        yVarNamePattern = "y.*"
+      )
+    );
+    randomGenerator = ea.rg.defaultRG(seed = 1);
+    solver = ea.s.numGA(
+      crossoverP = 0.8;
+      initialMaxV = 1;
+      initialMinV = -1;
+      mapper = ea.m.mlpMRF(
+        dataset = ea.d.num.empty(
+          xVars = [x1; x2; x3; x4; x5; x6; x7];
+          yVars = [y0; y1]
+        );
+        innerLayerRatio = 0.65;
+        nOfInnerLayers = 1
+      );
+      minNTournament = 3;
+      nEval = 10000;
+      nPop = 100;
+      sigmaMut = 0.35;
+      tournamentRate = 0.05
+    )
+  );
+  serializedGenotypes = [
+    "rO0ABXNyABNqYXZhLnV0aWwuQXJyYXlMaXN0eIHSHZnHYZ0DAAFJAARzaXpleHAAAAA0dwQAAAA0c3IAEGphdmEubGFuZy5Eb3VibGWAs8JKKWv7BAIAAUQABXZhbHVleHIAEGphdmEubGFuZy5OdW1iZXKGrJUdC5TgiwIAAHhwv9PiDoSCLKhzcQB+AAI/4jsmeF/xEXNxAH4AAr/EaBpnTX0Ac3EAfgACv/Kppt2kIB9zcQB+AALADrBX0S0QV3NxAH4AAkAAGYBJS0Jvc3EAfgACv+8PjiHJWNxzcQB+AAK/5hCe/efjFHNxAH4AAj/1LUuxdncPc3EAfgACv+pzwLnQegpzcQB+AALABLsbTCEuUHNxAH4AAj/pHeNH3IbEc3EAfgACP/KIl9U5lTtzcQB+AAI/6FWZraCjZXNxAH4AAj/7+4yVn9HRc3EAfgACv8zRzUGnlxhzcQB+AAI/2W4jSbqP/nNxAH4AAj/Q0Kr7bpxJc3EAfgACv/kibIqYYuBzcQB+AAI/6VpUqn7tuXNxAH4AAj/pm7jZ9UIwc3EAfgACv9l5QfBEihVzcQB+AAK/418MaJoZtXNxAH4AAj//g5AyUhVYc3EAfgACv9KL33mvrixzcQB+AAK/5alQbqsHh3NxAH4AAj960RdhhR8Ac3EAfgACv+nfSEXZh7JzcQB+AAJAC9iL01YCYHNxAH4AAj/aqHK2Up87c3EAfgACP/d8B0278kRzcQB+AAK/0bB1athwXHNxAH4AAj/NWcvtGZmAc3EAfgACv+RvpiarFklzcQB+AAK/yyPdDHXqMnNxAH4AAr/WLkXI7sNEc3EAfgACv/mO7HtGUJRzcQB+AAI/95JDghvEv3NxAH4AAj/uqh5pqvcqc3EAfgACP72X4w+P/GhzcQB+AAK/wOa+2cSbhHNxAH4AAj/+S1EbY560c3EAfgACv94IscJx/ShzcQB+AAK/990PqyOwTHNxAH4AAj/xHYr7jZelc3EAfgACP/QmCXnEhrNzcQB+AAJAABvsb9tnJnNxAH4AAkADcqN/xB/9c3EAfgACv+b0MqTmZXVzcQB+AAK/+iS24JBlZXNxAH4AAr/kg0xa71e+c3EAfgACP/38sbUFQbZ4"
+  ]
+)
