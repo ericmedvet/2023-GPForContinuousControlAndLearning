@@ -1,0 +1,36 @@
+ea.runOutcome(
+  index = 185;
+  run = ea.run(
+    problem = ea.p.mr.fromData(
+      trainingDataset = ea.dataset.numerical.fromFile(
+        filePath = "../phase2/data-ro-gp-1-003.txt";
+        folds = [0];
+        nFolds = 50;
+        xVarNamePattern = "x.*";
+        yVarNamePattern = "y.*"
+      )
+    );
+    randomGenerator = ea.rg.defaultRG(seed = 1);
+    solver = ea.s.numGA(
+      crossoverP = 0.8;
+      initialMaxV = 1;
+      initialMinV = -1;
+      mapper = ea.m.mlpMRF(
+        dataset = ea.d.num.empty(
+          xVars = [x1; x2; x3; x4; x5; x6; x7; x8];
+          yVars = [y1; y2]
+        );
+        innerLayerRatio = 0.65;
+        nOfInnerLayers = 1
+      );
+      minNTournament = 3;
+      nEval = 10000;
+      nPop = 100;
+      sigmaMut = 0.35;
+      tournamentRate = 0.05
+    )
+  );
+  serializedGenotypes = [
+    "rO0ABXNyABNqYXZhLnV0aWwuQXJyYXlMaXN0eIHSHZnHYZ0DAAFJAARzaXpleHAAAAA5dwQAAAA5c3IAEGphdmEubGFuZy5Eb3VibGWAs8JKKWv7BAIAAUQABXZhbHVleHIAEGphdmEubGFuZy5OdW1iZXKGrJUdC5TgiwIAAHhwP/QZO00LnzpzcQB+AAJAD4y44+fLWHNxAH4AAr+AcA7N0CEAc3EAfgACv+nOhbK7xrtzcQB+AAK/+ApKySzQ3HNxAH4AAr/sitjAB1L+c3EAfgACwADUg4xn939zcQB+AAK/6H6zVNXWg3NxAH4AAj/td6IRC2Yuc3EAfgACv/fANkAuZ5dzcQB+AAJACbnpAeR4YnNxAH4AAj/eE3bMwt+fc3EAfgACP/YiwfrNETRzcQB+AAJABfhlImD0DHNxAH4AAj/tI7L47fmVc3EAfgACv+MdZXUzhXBzcQB+AAK/7jMtf/oiqnNxAH4AAr/6cd2EZEv6c3EAfgACv795Lw8BdzZzcQB+AAJAHjfLfOTB9HNxAH4AAr/cglICaDx0c3EAfgACv9kmUtUR3F1zcQB+AAK/5P0myRk/xnNxAH4AAj/XER7yrH5Ic3EAfgACP/gHr13ygOBzcQB+AAK/2xDnvBVXFXNxAH4AAr/0ZUqKemK5c3EAfgACv9eq01MABnRzcQB+AAJACqbOLbDgaXNxAH4AAj/xJQVj/EFOc3EAfgACP7wsWowNOiBzcQB+AAI/8E7G2ltgh3NxAH4AAj/n+AIoTkwkc3EAfgACQAMutvTRakRzcQB+AAK/1E/MkmMw4nNxAH4AAj/LPt9GIOLsc3EAfgACP8qYX/o9+jpzcQB+AAI/+b1D5uhPJnNxAH4AAr/Iex2FEwkac3EAfgACv+wNVwvR4PBzcQB+AAI/tOZrh01/lHNxAH4AAsAE/3ZnzpSbc3EAfgACwA+G3Pm7e+FzcQB+AAI/9aZ21dGFEHNxAH4AAj/9UVmtak9Mc3EAfgACP/hKpnri/FhzcQB+AAI/ps4PxNliAHNxAH4AAj/4VE2nS3X5c3EAfgACQAb0oPpbR6VzcQB+AAI/6sprzA39PnNxAH4AAj/7OlmvPNd8c3EAfgACP+CXFI3b2lhzcQB+AAJAAyseb5krBnNxAH4AAj//QW4OLawkc3EAfgACQAfEkDPbSYpzcQB+AAI/+tGYlm6kBnNxAH4AAj/y/OdCLPsNeA=="
+  ]
+)

@@ -1,0 +1,36 @@
+ea.runOutcome(
+  index = 21;
+  run = ea.run(
+    problem = ea.p.mr.fromData(
+      trainingDataset = ea.dataset.numerical.fromFile(
+        filePath = "../phase2/data-ro-ga-1-002.txt";
+        folds = [0];
+        nFolds = 50;
+        xVarNamePattern = "x.*";
+        yVarNamePattern = "y.*"
+      )
+    );
+    randomGenerator = ea.rg.defaultRG(seed = 2);
+    solver = ea.s.numGA(
+      crossoverP = 0.8;
+      initialMaxV = 1;
+      initialMinV = -1;
+      mapper = ea.m.mlpMRF(
+        dataset = ea.d.num.empty(
+          xVars = [x1; x2; x3; x4; x5; x6; x7; x8];
+          yVars = [y1; y2]
+        );
+        innerLayerRatio = 0.65;
+        nOfInnerLayers = 1
+      );
+      minNTournament = 3;
+      nEval = 10000;
+      nPop = 100;
+      sigmaMut = 0.35;
+      tournamentRate = 0.05
+    )
+  );
+  serializedGenotypes = [
+    "rO0ABXNyABNqYXZhLnV0aWwuQXJyYXlMaXN0eIHSHZnHYZ0DAAFJAARzaXpleHAAAAA5dwQAAAA5c3IAEGphdmEubGFuZy5Eb3VibGWAs8JKKWv7BAIAAUQABXZhbHVleHIAEGphdmEubGFuZy5OdW1iZXKGrJUdC5TgiwIAAHhwv8qZp4yqZ0VzcQB+AAI/4HPCPRLiYnNxAH4AAj/yteR03fd5c3EAfgACv8UlcuFAkqdzcQB+AAI/3AhAUgs8AnNxAH4AAj/+P4cQG4r0c3EAfgACv/iAUMQXxcZzcQB+AAK/4D2w+mVZx3NxAH4AAkAAB7BWmF4Mc3EAfgACv9Ux6IoSPLZzcQB+AAK/0hWPGsJY4HNxAH4AAr/pL1PEvM9Fc3EAfgACv/dE55T23aNzcQB+AAJAArvwP1pWinNxAH4AAj/+cIpgd2cyc3EAfgACv+jiyzMaDtxzcQB+AAI/7KrYm0j0qnNxAH4AAkAO/lzvyJJ+c3EAfgACP9jvaX45plRzcQB+AALADDhBqbGiwXNxAH4AAr/n4iJR0Ofac3EAfgACwAh1TF6oexFzcQB+AAI/4+fS5bwR9HNxAH4AAj/p+HnvQ4BKc3EAfgACv+WU+71IOKhzcQB+AAK//MUxZU/RyHNxAH4AAj+6UbVG29qWc3EAfgACP/EzPwl1OzVzcQB+AAK/309wTVt4pXNxAH4AAj/TE3pKUUJRc3EAfgACwAO1wgEWlmlzcQB+AAI/4b1VSQ88GnNxAH4AAj/1fItvGhbdc3EAfgACP+7ZMZOeUkVzcQB+AAK/6Bw22CYfXnNxAH4AAr/2EAdweY87c3EAfgACP/tFIcfsFd5zcQB+AAI/3noaozV0z3NxAH4AAsAHfBtVDF+Ic3EAfgACv/x7vp786/lzcQB+AAI/+io/pb/OAXNxAH4AAr/sSRnNbQZqc3EAfgACP+rW/hi80mZzcQB+AAK/23kitOSMFXNxAH4AAsAASw7i51tuc3EAfgACP7bC5ts2kMBzcQB+AAK/63pO70XFLnNxAH4AAr/0719aBdz6c3EAfgACv+xFdpleYeBzcQB+AAK/7tp/ACHPB3NxAH4AAj/htQf36t3jc3EAfgACv+vNEuzBCVdzcQB+AALAAg1TsKnBiHNxAH4AAsAB/EDfp+/Xc3EAfgACP9LX8MjupKBzcQB+AAK/6wNXja0hBnNxAH4AAj/1N1pTWhEDeA=="
+  ]
+)
