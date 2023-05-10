@@ -18,36 +18,36 @@ ea.experiment(
         nPop = 100
       )
     ]) * (problem = [
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ga-3-001.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ga-3-002.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ga-3-003.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ga-3-004.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ga-3-005.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ga-3-006.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ga-3-007.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ga-3-008.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ga-3-009.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ga-3-010.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ga-3-001.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-gp-3-002.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-gp-3-003.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-gp-3-004.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-gp-3-005.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-gp-3-006.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-gp-3-007.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-gp-3-008.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-gp-3-009.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-gp-3-010.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ographea-3-001.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ographea-3-002.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ographea-3-003.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ographea-3-004.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ographea-3-005.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ographea-3-006.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ographea-3-007.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ographea-3-008.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ographea-3-009.txt"));
-      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 40; filePath = "../phase2/data-ro-ographea-3-010.txt"))
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ga-3-001.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ga-3-002.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ga-3-003.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ga-3-004.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ga-3-005.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ga-3-006.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ga-3-007.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ga-3-008.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ga-3-009.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ga-3-010.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ga-3-001.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-gp-3-002.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-gp-3-003.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-gp-3-004.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-gp-3-005.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-gp-3-006.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-gp-3-007.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-gp-3-008.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-gp-3-009.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-gp-3-010.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ographea-3-001.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ographea-3-002.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ographea-3-003.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ographea-3-004.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ographea-3-005.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ographea-3-006.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ographea-3-007.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ographea-3-008.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ographea-3-009.txt"));
+      ea.p.mr.fromData(trainingDataset = ea.dataset.numerical.fromFile(nFolds = 50; filePath = "../phase2/data-ro-ographea-3-010.txt"))
     ]) * [ea.run()];
   listeners = [
     ea.l.bestCsv(
