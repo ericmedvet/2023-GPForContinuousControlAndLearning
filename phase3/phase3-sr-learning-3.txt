@@ -2,18 +2,18 @@ ea.experiment(
   runs = (randomGenerator = (seed = [1:1:5]) * [ea.rg.defaultRG()]) *
     (solver = [
       ea.s.multiSRTreeGP(
-        mapper = ea.m.treeMRF(dataset = ea.d.num.empty(xVars = [x0;x1;x2;x3;x4;x5;x6;x7;x8;x9;x10;x11;x12;x13;x14;x15]; yVars = [y0;y1;y2;y3]); postOperator = tanh);
+        mapper = ea.m.treeMRF(dataset = ea.d.num.empty(xVars = [x01;x02;x03;x04;x05;x06;x07;x08;x09;x10;x11;x12;x13;x14;x15;x16]; yVars = [y1;y2;y3;y4]); postOperator = tanh);
         nEval = 10000;
         nPop = 100;
         diversity = true
       );
       ea.s.numGA(
-        mapper = ea.m.mlpMRF(dataset = ea.d.num.empty(xVars = [x0;x1;x2;x3;x4;x5;x6;x7;x8;x9;x10;x11;x12;x13;x14;x15]; yVars = [y0;y1;y2;y3]));
+        mapper = ea.m.mlpMRF(dataset = ea.d.num.empty(xVars = [x01;x02;x03;x04;x05;x06;x07;x08;x09;x10;x11;x12;x13;x14;x15;x16]; yVars = [y1;y2;y3;y4]));
         nEval = 10000;
         nPop = 100
       );
       ea.s.oGraphea(
-        mapper = ea.m.oGraphMRF(dataset = ea.d.num.empty(xVars = [x0;x1;x2;x3;x4;x5;x6;x7;x8;x9;x10;x11;x12;x13;x14;x15]; yVars = [y0;y1;y2;y3]); postOperator = tanh);
+        mapper = ea.m.oGraphMRF(dataset = ea.d.num.empty(xVars = [x01;x02;x03;x04;x05;x06;x07;x08;x09;x10;x11;x12;x13;x14;x15;x16]; yVars = [y1;y2;y3;y4]); postOperator = tanh);
         nEval = 10000;
         nPop = 100
       )
