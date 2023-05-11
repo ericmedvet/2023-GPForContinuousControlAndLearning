@@ -39,6 +39,26 @@ d.ie = d.ie %>% mutate(teacher = factor(teacher), learner = factor(learner))
 d.ie %>% mutate(evals=round(evals/100)*100) %>% group_by(teacher, learner, signals, evals) %>% summarise_at(vars(best.fitness), list(Q1=~quantile(., probs=0.25), median=median, Q3=~quantile(., probs=0.75))) %>% ggplot(aes(evals, median, col=learner)) + geom_line() + geom_ribbon(aes(ymin=Q1, ymax=Q3, fill=learner), alpha=0.2, color=NA) + facet_grid(factor(signals)~teacher)
 ```
 
+## Phase 4: VSR velocity with learned controllers
 
+```{r}
+d4.ga1 = read.table("phase4/ga-1.tsv") %>% mutate(signals = 1);
+d4.ga3 = read.table("phase4/ga-3.tsv") %>% mutate(signals = 3);
+d4.gp1 = read.table("phase4/gp-1.tsv") %>% mutate(signals = 1);
+d4.gp3 = read.table("phase4/gp-3.tsv") %>% mutate(signals = 3);
+d4.ograph1 = read.table("phase4/ographea-1.tsv") %>% mutate(signals = 1);
+d4.ograph3 = read.table("phase4/ographea-3.tsv") %>% mutate(signals = 3);
+d4 = rbind(d4.ga1, d4.ga3, d4.gp1, d4.gp3, d4.ograph1, d4.ograph3);
+names(d4) = c("learner", "teacher", "file", "xVelocity", "signals")
+d4 = d4 %>% mutate(learner = factor(str_extract(learner, "ea\\.m\\.([a-zA-Z]*)MRF", 1)), teacher = factor(str_extract(teacher, "ro-([a-z]*)-", 1))) %>% select(learner, teacher, xVelocity, signals)
+```
 
+### VSR velocity (table)
+```{r}
+d4 %>% group_by(learner, teacher, signals) %>% summarise_at(vars(xVelocity), list(P25=~quantile(., probs=0.25), median=median, P75=~quantile(., probs=0.75), P90=~quantile(., probs=0.90)))
+```
 
+### VSR velocity (plot)
+```{r, fig.width=4, fig.height=2}
+d4 %>% ggplot(aes(x = learner, y = xVelocity, color = learner)) + geom_boxplot() + facet_grid(factor(signals) ~ teacher)
+```
