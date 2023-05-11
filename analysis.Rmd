@@ -1,6 +1,8 @@
 ---
 title: "GP vs. oGraphEA vs. MLP-GA for VSR control"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 ```{r}
 require(tidyverse)
@@ -17,6 +19,9 @@ levels(d.de$solver.mapper.target.function.inner.inner) = c("mlp", "ograph", "tre
 ### VSR velocity
 ```{r, fig.width=4, fig.height=2}
 d.de %>% mutate(evals=round(evals/100)*100) %>% group_by(solver.mapper.target.function.inner.inner, solver.mapper.target.signals, evals) %>% summarise_at(vars(best.fitness.s.task.l.xVelocity), list(Q1=~quantile(., probs=0.25), median=median, Q3=~quantile(., probs=0.75))) %>% ggplot(aes(evals, median, col=solver.mapper.target.function.inner.inner)) + geom_line() + geom_ribbon(aes(ymin=Q1, ymax=Q3, fill=solver.mapper.target.function.inner.inner), alpha=0.2, color=NA) + facet_grid(factor(solver.mapper.target.signals)~.)
+```
+```{r}
+d.de %>% mutate(evals=round(evals/100)*100) %>% group_by(solver.mapper.target.function.inner.inner, solver.mapper.target.signals, evals) %>% summarise_at(vars(best.fitness.s.task.l.xVelocity), list(Q1=~quantile(., probs=0.25), median=median, Q3=~quantile(., probs=0.75)))
 ```
 
 ### Controller size
