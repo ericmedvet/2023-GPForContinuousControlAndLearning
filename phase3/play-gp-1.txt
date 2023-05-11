@@ -20,11 +20,11 @@ er.play(
         inputSigma = 0.05;
         outputSigma = 0
       );
-      signals = 3
+      signals = 1
     )
   );
   task = s.task.locomotion(terrain = s.t.hilly(chunkH = 0.25));
-  genotype = er.fromRunOutcome(filePath = "ro-3-ea.m.treeMRF-439-05.txt");
+  genotype = er.fromRunOutcome(filePath = "ro-ea.m.treeMRF-439-05.txt");
   outcomeFunctions = [
     er.nf.f(inner = s.task.locomotion.xVelocity())
   ]

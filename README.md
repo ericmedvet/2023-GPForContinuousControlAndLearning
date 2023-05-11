@@ -38,6 +38,16 @@ java -cp "/home/eric/IdeaProjects/2d-robot-evolution/io.github.ericmedvet.robote
 
 ## Phase 4: simulations with regressors as controllers
 
+```shell
+cd phase3
+sh ../phase4/simulate-ga-1.sh
+sh ../phase4/simulate-ga-3.sh
+sh ../phase4/simulate-gp-1.sh
+sh ../phase4/simulate-gp-3.sh
+sh ../phase4/simulate-ographea-1.sh
+sh ../phase4/simulate-ographea-3.sh
+```
+
 ### Starting the monitoring server (for phase 1 and phase 3)
 
 ```shell

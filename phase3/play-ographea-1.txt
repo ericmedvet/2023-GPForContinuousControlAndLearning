@@ -24,7 +24,7 @@ er.play(
     )
   );
   task = s.task.locomotion(terrain = s.t.hilly(chunkH = 0.25));
-  genotype = er.fromRunOutcome(filePath = "ro-ea.m.oGraphMRF-014-05.txt");
+  genotype = er.fromRunOutcome(filePath = "ro-ea.m.oGraphMRF-449-05.txt");
   outcomeFunctions = [
     er.nf.f(inner = s.task.locomotion.xVelocity())
   ]

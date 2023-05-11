@@ -1,5 +1,5 @@
 er.play(
-  mapper = er.m.treeParametrizedHomoBrains(
+  mapper = er.m.oGraphParametrizedHomoBrains(
     target = s.a.distributedNumGridVSR(
       body = s.a.vsr.gridBody(
         sensorizingFunction = s.a.vsr.sf.uniform(
@@ -14,7 +14,7 @@ er.play(
       );
       function = ds.num.noised(
         inner = ds.num.outStepped(
-          inner = er.ds.num.treeMRF(postOperator = tanh);
+          inner = er.ds.num.oGraphMRF(postOperator = tanh);
           stepT = 0.2
         );
         inputSigma = 0.05;
@@ -24,7 +24,7 @@ er.play(
     )
   );
   task = s.task.locomotion(terrain = s.t.hilly(chunkH = 0.25));
-  genotype = er.fromRunOutcome(filePath = "ro-3-ea.m.treeMRF-439-05.txt");
+  genotype = er.fromRunOutcome(filePath = "ro-3-ea.m.oGraphMRF-449-05.txt");
   outcomeFunctions = [
     er.nf.f(inner = s.task.locomotion.xVelocity())
   ]
