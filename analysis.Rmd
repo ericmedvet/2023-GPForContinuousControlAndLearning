@@ -7,19 +7,38 @@ require(tidyverse)
 require(skimr)
 ```
 
-## Direct evolution
+## Phase 1: direct evolution
 
 ```{r}
 d.de = read.csv2("phase1/best.csv", dec=".", strip.white = T, stringsAsFactors = T)
-skim(d.de)
+levels(d.de$solver.mapper.target.function.inner.inner) = c("mlp", "ograph", "trees")
 ```
 
 ### VSR velocity
-```{r, fig.width=8, fig.height=3}
+```{r, fig.width=4, fig.height=2}
 d.de %>% mutate(evals=round(evals/100)*100) %>% group_by(solver.mapper.target.function.inner.inner, solver.mapper.target.signals, evals) %>% summarise_at(vars(best.fitness.s.task.l.xVelocity), list(Q1=~quantile(., probs=0.25), median=median, Q3=~quantile(., probs=0.75))) %>% ggplot(aes(evals, median, col=solver.mapper.target.function.inner.inner)) + geom_line() + geom_ribbon(aes(ymin=Q1, ymax=Q3, fill=solver.mapper.target.function.inner.inner), alpha=0.2, color=NA) + facet_grid(factor(solver.mapper.target.signals)~.)
 ```
 
-### Controller size velocity
-```{r, fig.width=8, fig.height=3}
+### Controller size
+```{r, fig.width=4, fig.height=2}
 d.de %>% mutate(evals=round(evals/100)*100) %>% group_by(solver.mapper.target.function.inner.inner, solver.mapper.target.signals, evals) %>% summarise_at(vars(best.genotype.size), list(Q1=~quantile(., probs=0.25), median=median, Q3=~quantile(., probs=0.75))) %>% ggplot(aes(evals, median, col=solver.mapper.target.function.inner.inner)) + geom_line() + geom_ribbon(aes(ymin=Q1, ymax=Q3, fill=solver.mapper.target.function.inner.inner), alpha=0.2, color=NA) + facet_grid(factor(solver.mapper.target.signals)~.)
 ```
+
+## Phase 3: indirect evolution, i.e., from behaviors
+```{r}
+d.ie1 = read.csv2("phase3/best-1.csv", dec=".", strip.white = T, stringsAsFactors = T)
+d.ie1 = d.ie1 %>% mutate(learner = str_extract(solver.mapper, "ea\\.m\\.([a-zA-Z]*)MRF", 1), teacher = str_extract(problem.trainingDataset.filePath, "ro-([a-z]*)-", 1), signals = 1) %>% select(learner, teacher, randomGenerator.seed, iterations, evals, best.fitness, best.genotype.size, signals)
+d.ie3 = read.csv2("phase3/best-3.csv", dec=".", strip.white = T, stringsAsFactors = T)
+d.ie3 = d.ie3 %>% mutate(learner = str_extract(solver.mapper, "ea\\.m\\.([a-zA-Z]*)MRF", 1), teacher = str_extract(problem.trainingDataset.filePath, "ro-([a-z]*)-", 1), signals = 3) %>% select(learner, teacher, randomGenerator.seed, iterations, evals, best.fitness, best.genotype.size, signals)
+d.ie = rbind(d.ie1, d.ie3)
+d.ie = d.ie %>% mutate(teacher = factor(teacher), learner = factor(learner))
+```
+
+### Multivariate real function avg MSE
+```{r, fig.width=4, fig.height=2}
+d.ie %>% mutate(evals=round(evals/100)*100) %>% group_by(teacher, learner, signals, evals) %>% summarise_at(vars(best.fitness), list(Q1=~quantile(., probs=0.25), median=median, Q3=~quantile(., probs=0.75))) %>% ggplot(aes(evals, median, col=learner)) + geom_line() + geom_ribbon(aes(ymin=Q1, ymax=Q3, fill=learner), alpha=0.2, color=NA) + facet_grid(factor(signals)~teacher)
+```
+
+
+
+
