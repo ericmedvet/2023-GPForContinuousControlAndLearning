@@ -48,9 +48,17 @@ sh ../phase4/simulate-ographea-1.sh
 sh ../phase4/simulate-ographea-3.sh
 ```
 
+## Other things
+
 ### Starting the monitoring server (for phase 1 and phase 3)
 
 ```shell
 java -cp "/home/eric/IdeaProjects/2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.jgea.experimenter.net.NetListenerServer -k <key>
 ```
 
+### Save images
+
+```shell
+cd images
+java -cp "/home/eric/IdeaProjects/2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.robotevo2d.main.Player -f saver-play-ga-1.txt
+```
