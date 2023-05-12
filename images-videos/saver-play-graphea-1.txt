@@ -14,11 +14,7 @@ er.play(
       );
       function = ds.num.noised(
         inner = ds.num.outStepped(
-          inner = er.ds.num.ioSaver(
-            inner = er.ds.num.oGraphMRF(postOperator = tanh);
-            filePath = "../phase2/data-FILE_NAME";
-            finalT = 29
-          );
+          inner = er.ds.num.oGraphMRF(postOperator = tanh);
           stepT = 0.2
         );
         inputSigma = 0.05;
@@ -26,10 +22,15 @@ er.play(
       );
       signals = 1
     )
-  );      
+  );
   task = s.task.locomotion(terrain = s.t.hilly(chunkH = 0.25));
-  genotype = er.fromRunOutcome(filePath = "FILE_NAME");
+  genotype = er.fromRunOutcome(filePath = "../phase1/ro-ographea-1-001.txt");
   outcomeFunctions = [
     er.nf.f(inner = s.task.locomotion.xVelocity())
+  ];
+  consumers = [
+    er.c.frames(filePath = "graphea-1-001-5s.png"; startTime = 5);
+    er.c.frames(filePath = "graphea-1-001-6s.png"; startTime = 6);
+    er.c.video(filePath = "../videos/graphea-1-001.mp4"; title = "GraphEA n_comm=1 seed=1"; codec = "ffmpeg_small")
   ]
 )
