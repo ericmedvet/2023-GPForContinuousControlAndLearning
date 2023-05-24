@@ -1,0 +1,36 @@
+er.play(  
+  mapper = er.m.numericalParametrizedHomoBrains(
+    target = s.a.distributedNumGridVSR(
+      body = s.a.vsr.gridBody(
+        sensorizingFunction = s.a.vsr.sf.uniform(
+          sensors = [
+            s.s.ar();
+            s.s.rv(a = 0);
+            s.s.rv(a = 90);
+            s.s.d(a = -90; r = 1)
+          ]
+        );
+        shape = s.a.vsr.s.biped(h = 3; w = 4)
+      );
+      function = ds.num.noised(
+        inner = ds.num.outStepped(
+          inner = ds.num.mlp(innerLayerRatio = 0.65; nOfInnerLayers = 1);
+          stepT = 0.2
+        );
+        inputSigma = 0.05;
+        outputSigma = 0
+      );
+      signals = 3
+    )
+  );
+  task = s.task.locomotion(terrain = s.t.hilly(chunkH = 0.25));
+  genotype = er.fromRunOutcome(filePath = "../phase1/ro-ga-3-001.txt");
+  outcomeFunctions = [
+    er.nf.f(inner = s.task.locomotion.xVelocity())
+  ];
+  consumers = [
+    er.c.frames(filePath = "ga-3-001-5s.png"; startTime = 5);
+    er.c.frames(filePath = "ga-3-001-6s.png"; startTime = 6);
+    er.c.video(filePath = "../videos/ga-3-001.mp4"; title = "NE n_comm=3 seed=1"; codec = "ffmpeg_small")
+  ]
+)
